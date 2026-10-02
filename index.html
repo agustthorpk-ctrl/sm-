@@ -12,10 +12,18 @@
 html{scroll-behavior:smooth}
 html,body{margin:0;overflow-x:hidden;font-family:Manrope,system-ui,sans-serif;background:#FFFFFF;color:#1B1D1F}
 *{box-sizing:border-box}
-.js-reveal .reveal{opacity:0;transform:translateY(48px);transition:opacity 0.9s ease,transform 0.9s cubic-bezier(.2,.7,.2,1)}
-.js-reveal .reveal.in{opacity:1;transform:none}
+.js-reveal .reveal{opacity:0;transform:translateY(64px);filter:blur(8px);transition:opacity 1s ease,transform 1.1s cubic-bezier(.16,1,.3,1),filter 1s ease}
+.js-reveal .reveal.from-left{transform:translateX(-80px)}
+.js-reveal .reveal.from-right{transform:translateX(80px)}
+.js-reveal .reveal.zoom{transform:scale(.94)}
+.js-reveal .reveal.in{opacity:1;transform:none;filter:none}
+@keyframes heroIn{from{opacity:0;transform:translateY(40px);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.hero-content>*{animation:heroIn 1.1s cubic-bezier(.16,1,.3,1) backwards}
+.hero-content>*:nth-child(1){animation-delay:.15s}.hero-content>*:nth-child(2){animation-delay:.3s}.hero-content>*:nth-child(3){animation-delay:.5s}.hero-content>*:nth-child(4){animation-delay:.7s}
+@keyframes photoIn{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:none}}
+.hero-photo{animation:photoIn 1.8s ease backwards}
 .hero-photo,.hero-content{will-change:opacity,transform}
-@media (prefers-reduced-motion: reduce){.js-reveal .reveal{opacity:1;transform:none;transition:none}}
+@media (prefers-reduced-motion: reduce){.js-reveal .reveal{opacity:1;transform:none;filter:none;transition:none}.hero-content>*,.hero-photo{animation:none}}
 .hero-bg{position:relative;overflow:hidden;background-color:#0B0C0D}
 .hero-bg>header,.hero-bg>section{position:relative;z-index:2}
 .hero-photo{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:block}
@@ -56,16 +64,16 @@ a{color:#B00E28}a:hover{color:#7F0A1D}
 </section>
 </div>
 
-<section id="thjonusta" class="reveal" style="display: flex; flex-direction: column; gap: 48px; padding: clamp(64px, 8vw, 112px) clamp(20px, 6vw, 96px); background: #F5F3EF; color: #1B1D1F">
+<section id="thjonusta" style="display: flex; flex-direction: column; gap: 48px; padding: clamp(64px, 8vw, 112px) clamp(20px, 6vw, 96px); background: #F5F3EF; color: #1B1D1F">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: clamp(32px, 6vw, 96px); align-items: start">
-<div style="display: flex; flex-direction: column; gap: 16px; min-width: 0">
+<div class="reveal from-left" style="display: flex; flex-direction: column; gap: 16px; min-width: 0">
 <div style="font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #B00E28">Þjónusta</div>
 <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: clamp(36px, 4.2vw, 60px); line-height: 1.05; font-weight: 600; letter-spacing: -0.025em">Vefsíður fyrir allskonar fyrirtæki.</h2>
 </div>
 <div style="display: flex; flex-direction: column; gap: 24px; min-width: 0; max-width: 720px">
-<p style="margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.6; color: #1B1D1F">Síðuplan gerir vefsíður fyrir fyrirtæki af öllum stærðum og gerðum. Hvort sem þú rekur kaffihús, hárgreiðslustofu, iðnfyrirtæki, verslun eða ert að stíga fyrstu skrefin með nýja hugmynd, þá smíðum við vef sem passar þínum rekstri.</p>
-<p style="margin: 0; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.75; color: #55595E">Við byrjum alltaf á því að skilja hvað fyrirtækið gerir og hverjum það vill ná til. Út frá því hönnum við útlit sem endurspeglar vörumerkið og byggjum vef sem er einfaldur í notkun, hraður og lítur vel út hvort sem hann er skoðaður í síma eða tölvu. Sumir þurfa einfalda kynningarsíðu með upplýsingum og samskiptaformi, aðrir stærri vef með mörgum undirsíðum, og við lögum verkið að því sem hentar hverju sinni.</p>
-<p style="margin: 0; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.75; color: #55595E">Markmiðið er að þú fáir vef sem þú ert stolt/ur af og sem vinnur fyrir fyrirtækið þitt. Við sjáum um tæknilegu hliðina, frá hýsingu og léni til þess að síðan finnist á Google, svo þú getir einbeitt þér að rekstrinum. Og þegar vefurinn er kominn í loftið erum við áfram til staðar ef eitthvað þarf að laga eða bæta.</p>
+<p class="reveal" style="transition-delay: 150ms; margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.6; color: #1B1D1F">Síðuplan gerir vefsíður fyrir fyrirtæki af öllum stærðum og gerðum. Hvort sem þú rekur kaffihús, hárgreiðslustofu, iðnfyrirtæki, verslun eða ert að stíga fyrstu skrefin með nýja hugmynd, þá smíðum við vef sem passar þínum rekstri.</p>
+<p class="reveal" style="transition-delay: 330ms; margin: 0; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.75; color: #55595E">Við byrjum alltaf á því að skilja hvað fyrirtækið gerir og hverjum það vill ná til. Út frá því hönnum við útlit sem endurspeglar vörumerkið og byggjum vef sem er einfaldur í notkun, hraður og lítur vel út hvort sem hann er skoðaður í síma eða tölvu. Sumir þurfa einfalda kynningarsíðu með upplýsingum og samskiptaformi, aðrir stærri vef með mörgum undirsíðum, og við lögum verkið að því sem hentar hverju sinni.</p>
+<p class="reveal" style="transition-delay: 510ms; margin: 0; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.75; color: #55595E">Markmiðið er að þú fáir vef sem þú ert stolt/ur af og sem vinnur fyrir fyrirtækið þitt. Við sjáum um tæknilegu hliðina, frá hýsingu og léni til þess að síðan finnist á Google, svo þú getir einbeitt þér að rekstrinum. Og þegar vefurinn er kominn í loftið erum við áfram til staðar ef eitthvað þarf að laga eða bæta.</p>
 </div>
 </div>
 </section>
@@ -99,8 +107,8 @@ a{color:#B00E28}a:hover{color:#7F0A1D}
 </div>
 </section>
 
-<section id="hafa-samband" class="reveal" style="flex-grow: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: clamp(40px, 6vw, 80px); padding: clamp(64px, 8vw, 112px) clamp(20px, 6vw, 96px); background: #B00E28; color: #FFFFFF">
-<div style="display: flex; flex-direction: column; gap: 28px; min-width: 0">
+<section id="hafa-samband" style="flex-grow: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: clamp(40px, 6vw, 80px); padding: clamp(64px, 8vw, 112px) clamp(20px, 6vw, 96px); background: #B00E28; color: #FFFFFF">
+<div class="reveal from-left" style="display: flex; flex-direction: column; gap: 28px; min-width: 0">
 <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: clamp(40px, 5vw, 72px); line-height: 1; font-weight: 600; letter-spacing: -0.03em">Eigum við að smíða eitthvað saman?</h2>
 <p style="margin: 0; max-width: 480px; font-size: clamp(17px, 1.4vw, 19px); line-height: 1.6; color: #FDE2E5">Segðu okkur aðeins frá fyrirtækinu og hvað þig vantar. Við svörum innan eins virks dags með hugmyndir og næstu skref.</p>
 <div style="display: flex; flex-direction: column; gap: 10px; font-size: 18px; font-weight: 600">
@@ -109,7 +117,7 @@ a{color:#B00E28}a:hover{color:#7F0A1D}
 <a href="tel:+3548312411" style="color: #FFFFFF">831 2411</a>
 </div>
 </div>
-<form action="mailto:sidupla@gmail.com" method="post" enctype="text/plain" style="display: flex; flex-direction: column; gap: 20px; padding: clamp(24px, 3vw, 40px); border-radius: 16px; background: #F2EEE6; color: #1B1D1F; min-width: 0">
+<form action="mailto:sidupla@gmail.com" method="post" enctype="text/plain" class="reveal from-right" style="transition-delay: 200ms; display: flex; flex-direction: column; gap: 20px; padding: clamp(24px, 3vw, 40px); border-radius: 16px; background: #F2EEE6; color: #1B1D1F; min-width: 0">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0">
 <label for="nafn" style="font-size: 15px; font-weight: 600">Nafn</label>
