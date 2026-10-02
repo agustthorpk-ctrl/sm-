@@ -26,9 +26,11 @@ html,body{margin:0;overflow-x:hidden;font-family:Manrope,system-ui,sans-serif;ba
 @media (prefers-reduced-motion: reduce){.js-reveal .reveal{opacity:1;transform:none;transition:none}.hero-content>*,.hero-photo,.hero-bg>header{animation:none}}
 .hero-bg{position:relative;overflow:hidden;background-color:#0B0C0D}
 .hero-bg>header,.hero-bg>section{position:relative;z-index:2}
-.hero-photo{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:block}
-.hero-dots{position:absolute;z-index:1;inset:0;width:100%;height:100%;pointer-events:none;display:block}
-.hero-shade{position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,rgba(11,12,13,0.88) 0%,rgba(11,12,13,0.66) 38%,rgba(11,12,13,0.25) 68%,rgba(11,12,13,0.12) 100%),linear-gradient(180deg,rgba(11,12,13,0.5) 0%,rgba(11,12,13,0.08) 25%,rgba(11,12,13,0.35) 100%)}
+.hero-photo{position:fixed;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:block}
+#thjonusta,#ferlid,#hafa-samband{position:relative;z-index:2}
+#ferlid{background:#FFFFFF}
+.hero-dots{position:fixed;z-index:1;inset:0;width:100%;height:100%;pointer-events:none;display:block}
+.hero-shade{position:fixed;z-index:1;inset:0;background:linear-gradient(90deg,rgba(11,12,13,0.88) 0%,rgba(11,12,13,0.66) 38%,rgba(11,12,13,0.25) 68%,rgba(11,12,13,0.12) 100%),linear-gradient(180deg,rgba(11,12,13,0.5) 0%,rgba(11,12,13,0.08) 25%,rgba(11,12,13,0.35) 100%)}
 @media (max-aspect-ratio: 1/1){.hero-photo{object-position:62% center}.hero-shade{background:linear-gradient(180deg,rgba(11,12,13,0.62) 0%,rgba(11,12,13,0.5) 45%,rgba(11,12,13,0.82) 100%)}}
 a{color:#B00E28}a:hover{color:#7F0A1D}
 </style>
@@ -66,8 +68,8 @@ a{color:#B00E28}a:hover{color:#7F0A1D}
 </section>
 </div>
 
-<section id="thjonusta" class="reveal" style="display: flex; flex-direction: column; gap: 48px; padding: clamp(64px, 8vw, 112px) clamp(20px, 6vw, 96px); background: #F5F3EF; color: #1B1D1F">
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: clamp(32px, 6vw, 96px); align-items: start">
+<section id="thjonusta" style="display: flex; flex-direction: column; gap: 48px; padding: clamp(64px, 8vw, 112px) clamp(20px, 6vw, 96px); background: #F5F3EF; color: #1B1D1F">
+<div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: clamp(32px, 6vw, 96px); align-items: start">
 <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0">
 <div style="font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #B00E28">Þjónusta</div>
 <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: clamp(36px, 4.2vw, 60px); line-height: 1.05; font-weight: 600; letter-spacing: -0.025em">Vefsíður fyrir allskonar fyrirtæki.</h2>
@@ -109,8 +111,8 @@ a{color:#B00E28}a:hover{color:#7F0A1D}
 </div>
 </section>
 
-<section id="hafa-samband" class="reveal" style="flex-grow: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: clamp(40px, 6vw, 80px); padding: clamp(64px, 8vw, 112px) clamp(20px, 6vw, 96px); background: #B00E28; color: #FFFFFF">
-<div style="display: flex; flex-direction: column; gap: 28px; min-width: 0">
+<section id="hafa-samband" style="flex-grow: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: clamp(40px, 6vw, 80px); padding: clamp(64px, 8vw, 112px) clamp(20px, 6vw, 96px); background: #B00E28; color: #FFFFFF">
+<div class="reveal" style="display: flex; flex-direction: column; gap: 28px; min-width: 0">
 <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: clamp(40px, 5vw, 72px); line-height: 1; font-weight: 600; letter-spacing: -0.03em">Eigum við að smíða eitthvað saman?</h2>
 <p style="margin: 0; max-width: 480px; font-size: clamp(17px, 1.4vw, 19px); line-height: 1.6; color: #FDE2E5">Segðu okkur aðeins frá fyrirtækinu og hvað þig vantar. Við svörum innan eins virks dags með hugmyndir og næstu skref.</p>
 <div style="display: flex; flex-direction: column; gap: 10px; font-size: 18px; font-weight: 600">
@@ -119,7 +121,7 @@ a{color:#B00E28}a:hover{color:#7F0A1D}
 <a href="tel:+3548312411" style="color: #FFFFFF">831 2411</a>
 </div>
 </div>
-<form action="mailto:sidupla@gmail.com" method="post" enctype="text/plain" style="display: flex; flex-direction: column; gap: 20px; padding: clamp(24px, 3vw, 40px); border-radius: 16px; background: #F2EEE6; color: #1B1D1F; min-width: 0">
+<form action="mailto:sidupla@gmail.com" method="post" enctype="text/plain" class="reveal" style="transition-delay: 150ms; display: flex; flex-direction: column; gap: 20px; padding: clamp(24px, 3vw, 40px); border-radius: 16px; background: #F2EEE6; color: #1B1D1F; min-width: 0">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0">
 <label for="nafn" style="font-size: 15px; font-weight: 600">Nafn</label>
@@ -155,16 +157,17 @@ if (!cvs || !heroEl || !cvs.getContext) return;
 const ctx = cvs.getContext('2d');
 const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let W = 0, H = 0, dpr = 1, dots = [], lastY = window.scrollY || 0, push = 0, visible = true;
+function leftX() { const u = Math.random(); return Math.pow(u, 1.6) * W * 0.6; }
 function size() {
 dpr = Math.min(window.devicePixelRatio || 1, 2);
-W = heroEl.offsetWidth; H = heroEl.offsetHeight;
+W = window.innerWidth; H = window.innerHeight;
 cvs.width = W * dpr; cvs.height = H * dpr;
 ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-const n = Math.round(Math.min(140, Math.max(50, W * H / 11000)));
+const n = Math.round(Math.min(110, Math.max(45, W * H / 13000)));
 dots = [];
 for (let i = 0; i < n; i++) {
 const z = Math.random();
-dots.push({ x: Math.random() * W, y: Math.random() * H, z: z, r: 0.6 + z * 2.0, a: 0.25 + z * 0.6, vx: (Math.random() - 0.5) * 0.15, vy: -(0.08 + z * 0.35), t: Math.random() * 6.28 });
+dots.push({ x: leftX(), y: Math.random() * H, z: z, r: 0.6 + z * 2.0, a: 0.25 + z * 0.6, vx: (Math.random() - 0.5) * 0.15, vy: -(0.08 + z * 0.35), t: Math.random() * 6.28 });
 }
 }
 function draw() {
@@ -184,9 +187,9 @@ for (const d of dots) {
 d.t += 0.02 + d.z * 0.02;
 d.x += d.vx;
 d.y += d.vy - push * (0.15 + d.z * 0.6) * 0.1;
-if (d.y < -6) { d.y = H + 6; d.x = Math.random() * W; }
-if (d.y > H + 6) { d.y = -6; d.x = Math.random() * W; }
-if (d.x < -6) d.x = W + 6; if (d.x > W + 6) d.x = -6;
+if (d.y < -6) { d.y = H + 6; d.x = leftX(); }
+if (d.y > H + 6) { d.y = -6; d.x = leftX(); }
+if (d.x < -6) d.x = leftX(); if (d.x > W * 0.62) d.x = leftX();
 }
 if (visible) draw();
 window.__dotsRaf = requestAnimationFrame(step);
@@ -206,8 +209,6 @@ if (!hero || reduce) return;
 const y = window.scrollY || root.scrollTop || 0;
 const h = hero.offsetHeight || 1;
 const p = Math.min(Math.max(y / h, 0), 1);
-if (photo) { photo.style.opacity = String(1 - p * 0.9); photo.style.transform = 'translateY(' + (y * 0.35) + 'px)'; }
-if (content) { content.style.opacity = String(1 - p * 1.4); content.style.transform = 'translateY(' + (y * 0.15) + 'px)'; }
 };
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
