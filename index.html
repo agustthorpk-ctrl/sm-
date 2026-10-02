@@ -19,7 +19,7 @@ html,body{margin:0;overflow-x:hidden;font-family:Manrope,system-ui,sans-serif;ba
 .hero-bg{position:relative;overflow:hidden;background-color:#0B0C0D}
 .hero-bg>header,.hero-bg>section{position:relative;z-index:2}
 .hero-photo{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 45%;display:block}
-.hero-shade{position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,rgba(11,12,13,0.85) 0%,rgba(11,12,13,0.55) 40%,rgba(11,12,13,0.1) 75%),linear-gradient(180deg,rgba(11,12,13,0.45) 0%,rgba(11,12,13,0) 25%)}
+.hero-shade{position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,rgba(11,12,13,0.9) 0%,rgba(11,12,13,0.68) 40%,rgba(11,12,13,0.3) 75%,rgba(11,12,13,0.22) 100%),linear-gradient(180deg,rgba(11,12,13,0.5) 0%,rgba(11,12,13,0.1) 25%,rgba(11,12,13,0.25) 100%)}
 @media (max-aspect-ratio: 1/1){.hero-photo{object-position:62% center}.hero-shade{background:linear-gradient(180deg,rgba(11,12,13,0.55) 0%,rgba(11,12,13,0.4) 40%,rgba(11,12,13,0.8) 100%)}}
 a{color:#B00E28}a:hover{color:#7F0A1D}
 </style>
@@ -148,7 +148,7 @@ if (!hero || reduce) return;
 const y = window.scrollY || root.scrollTop || 0;
 const h = hero.offsetHeight || 1;
 const p = Math.min(Math.max(y / h, 0), 1);
-if (photo) { photo.style.opacity = String(1 - p * 0.9); photo.style.transform = 'translateY(' + (y * 0.35) + 'px) scale(' + (1 + p * 0.08) + ')'; }
+if (photo) { photo.style.opacity = String(1 - p * 0.9); photo.style.transform = 'translateY(' + (y * 0.35) + 'px)'; }
 if (content) { content.style.opacity = String(1 - p * 1.4); content.style.transform = 'translateY(' + (y * 0.15) + 'px)'; }
 };
 window.addEventListener('scroll', onScroll, { passive: true });
