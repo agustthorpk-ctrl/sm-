@@ -27,6 +27,7 @@ html,body{margin:0;overflow-x:hidden;font-family:Manrope,system-ui,sans-serif;ba
 .hero-bg{position:relative;overflow:hidden;background-color:#0B0C0D}
 .hero-bg>header,.hero-bg>section{position:relative;z-index:2}
 .hero-photo{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:block}
+.hero-dots{position:absolute;z-index:1;inset:0;width:100%;height:100%;pointer-events:none;display:block}
 .hero-shade{position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,rgba(11,12,13,0.88) 0%,rgba(11,12,13,0.66) 38%,rgba(11,12,13,0.25) 68%,rgba(11,12,13,0.12) 100%),linear-gradient(180deg,rgba(11,12,13,0.5) 0%,rgba(11,12,13,0.08) 25%,rgba(11,12,13,0.35) 100%)}
 @media (max-aspect-ratio: 1/1){.hero-photo{object-position:62% center}.hero-shade{background:linear-gradient(180deg,rgba(11,12,13,0.62) 0%,rgba(11,12,13,0.5) 45%,rgba(11,12,13,0.82) 100%)}}
 a{color:#B00E28}a:hover{color:#7F0A1D}
@@ -38,6 +39,7 @@ a{color:#B00E28}a:hover{color:#7F0A1D}
 <div class="hero-bg" style="color: #F2EEE6; min-height: 100vh; display: flex; flex-direction: column">
 <img class="hero-photo" src="hero.jpg" alt="">
 <div class="hero-shade"></div>
+<canvas class="hero-dots" aria-hidden="true"></canvas>
 <header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding: 24px clamp(20px, 6vw, 96px); border-bottom: 1px solid rgba(242,238,230,0.18)">
 <a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #F2EEE6">
 <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><polygon points="32,8 40,22 24,22" fill="#F0525F"></polygon><polygon points="21.1,27 42.9,27 50.3,40 13.7,40" fill="#F2EEE6"></polygon><polygon points="10.9,45 53.1,45 60,57 4,57" fill="#F2EEE6"></polygon></svg>
@@ -146,6 +148,54 @@ a{color:#B00E28}a:hover{color:#7F0A1D}
 <script>
 (function(){
 
+(function () {
+const cvs = document.querySelector('.hero-dots');
+const heroEl = document.querySelector('.hero-bg');
+if (!cvs || !heroEl || !cvs.getContext) return;
+const ctx = cvs.getContext('2d');
+const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let W = 0, H = 0, dpr = 1, dots = [], lastY = window.scrollY || 0, push = 0, visible = true;
+function size() {
+dpr = Math.min(window.devicePixelRatio || 1, 2);
+W = heroEl.offsetWidth; H = heroEl.offsetHeight;
+cvs.width = W * dpr; cvs.height = H * dpr;
+ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+const n = Math.round(Math.min(140, Math.max(50, W * H / 11000)));
+dots = [];
+for (let i = 0; i < n; i++) {
+const z = Math.random();
+dots.push({ x: Math.random() * W, y: Math.random() * H, z: z, r: 0.6 + z * 2.0, a: 0.25 + z * 0.6, vx: (Math.random() - 0.5) * 0.15, vy: -(0.08 + z * 0.35), t: Math.random() * 6.28 });
+}
+}
+function draw() {
+ctx.clearRect(0, 0, W, H);
+for (const d of dots) {
+const tw = 0.65 + 0.35 * Math.sin(d.t);
+ctx.globalAlpha = d.a * tw;
+ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 6.2832); ctx.fillStyle = '#ffffff'; ctx.fill();
+}
+ctx.globalAlpha = 1;
+}
+function step() {
+const y = window.scrollY || 0;
+push += (y - lastY) * 0.9; lastY = y;
+push *= 0.9;
+for (const d of dots) {
+d.t += 0.02 + d.z * 0.02;
+d.x += d.vx;
+d.y += d.vy - push * (0.15 + d.z * 0.6) * 0.1;
+if (d.y < -6) { d.y = H + 6; d.x = Math.random() * W; }
+if (d.y > H + 6) { d.y = -6; d.x = Math.random() * W; }
+if (d.x < -6) d.x = W + 6; if (d.x > W + 6) d.x = -6;
+}
+if (visible) draw();
+window.__dotsRaf = requestAnimationFrame(step);
+}
+size(); draw();
+window.addEventListener('resize', size);
+if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(heroEl);
+if (!still) window.__dotsRaf = requestAnimationFrame(step);
+})();
 const root = document.documentElement;
 const photo = document.querySelector('.hero-photo');
 const content = document.querySelector('.hero-content');
